@@ -20,6 +20,7 @@ export const IGNORE_CURRENT_ROOT_GIT_CONFIG: GitConfig = {
 
 const CONFIG_LIST_KEY = 'configList';
 const IGNORE_LIST_KEY = 'ignoreRootList';
+const AUTO_QUERY_KEY = 'autoQuery'
 
 export function getConfig() {
     return workspace.getConfiguration('git-autoconfig');
@@ -35,6 +36,14 @@ export function getIgnoreRootList() {
 
 export function setIgnoreRootList(ignoreRootList: string[]): Thenable<void> {
     return getConfig().update(IGNORE_LIST_KEY, ignoreRootList, true);
+}
+
+export function setAutoQueryEnabled(enabled: boolean): Thenable<void> {
+    return getConfig().update(AUTO_QUERY_KEY, enabled, true);
+}
+
+export function getAutoQueryEnabled() {
+    return getConfig().get<boolean>(AUTO_QUERY_KEY, true);
 }
 
 export function addRootToIgnoreList(root: string): Thenable<void> {
