@@ -15,8 +15,12 @@ This extension contributes the following settings:
 
 * `git-autoconfig.queryInterval`: Interval for querying of git config in ms
 * `git-autoconfig.configList`: List of local git configs in format [{'user.email': 'Marvolo@Riddle.Tom', 'user.name': 'Tom Marvolo Riddle'}] . Extension itself writes into this setting too.
+* `git-autoconfig.autoQuery`: Controls if this extension will query git automatically for local configuration. `true` will auto-query `false` won't auto-query but still allow to set a local git config manually.
 
 ## Release Notes
+
+## [0.0.4] 2021-04-21
+- Feature: Added config variable for controlling auto-query behavior
 
 ## [0.0.3] 2021-04-15
 - Feature: sshCommand added - now extension allows to set different SSH keys for different usernames per repository;
