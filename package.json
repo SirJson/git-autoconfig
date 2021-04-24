@@ -2,7 +2,7 @@
     "name": "git-autoconfig",
     "displayName": "git-autoconfig",
     "description": "Automatic git config user.email and user.name setting for vscode",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "publisher": "shyykoserhiy",
     "license": "MIT",
     "engines": {
@@ -94,7 +94,8 @@
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
-        "test": "node ./out/src/test/runTest.js"
+        "test": "node ./out/src/test/runTest.js",
+        "package": "vsce package"
     },
     "devDependencies": {
         "@types/glob": "^7.1.3",
