@@ -36,7 +36,7 @@ export async function activate(context: vscode.ExtensionContext) {
     const checkForLocalConfig = async () => {
         const repositoryRoot = await findRepositoryRoot(false);
         const repository = new Repository(git, repositoryRoot);
-        if(!getAutoQueryEnabled()) {
+        if (!getAutoQueryEnabled()) {
             return;
         }
         try {
@@ -145,10 +145,12 @@ export async function activate(context: vscode.ExtensionContext) {
 
                 await repository.config('local', 'user.email', newConfig['user.email']);
                 await repository.config('local', 'user.name', newConfig['user.name']);
-                await repository.config('local', 'core.sshCommand', newConfig['core.sshCommand']);
+                if (newConfig['core.sshCommand']) {
+                    await repository.config('local', 'core.sshCommand', newConfig['core.sshCommand']);
+                }
 
             } catch (e) {
-                vscode.window.showErrorMessage('Failed to set local git config.', e);
+                vscode.window.showErrorMessage('Failed to set local git / ssh config.', e);
                 return false;
             }
             vscode.window.showInformationMessage('Local git config successfully set.')
